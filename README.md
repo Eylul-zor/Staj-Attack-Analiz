@@ -95,7 +95,7 @@ Genel Bakış
 ## Saldırı Türlerinin Dağılımı:
 ![Attack Types](output/attack_types.png)
 
-Yorum: Yorum: Command Injection ve SQL Injection en sık karşılaşılan kategorize edilmiş saldırı türleri.
+Yorum: Command Injection ve SQL Injection en sık karşılaşılan kategorize edilmiş saldırı türleri.
 
 ## Saatlik Attack Yoğunluğu
 ![Hourly Attacks](output/hourly_attacks.png)
@@ -109,9 +109,10 @@ ve sürecin zamana bağlı bir davranış gösterdiğini ifade eder çünkü gra
 
 Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunlaşmakta.GET istekleri çoğunlukla yalnızca veri görüntüleme amacı taşırken,POST istekleri kullanıcıdan  veri gönderimi içermektedir.Bu nedenle saldırı gözlemlerinin POST istekleri altında toplanması,Saldırılarının tamamının request üzerinden gerçekleştiği söylenebilir.
 
-## --- RESPONSE TIME ORTALAMALARI ---
-attack
-ATTACK    354.483051
-NONE        6.261861
+## RESPONSE TIME ORTALAMALARI 
+ATTACK  :  354.483051 
+
+NONE     :   6.261861
+
 Yorum: Saldırı istekleri normal isteklere göre ~57 kat daha yavaş. Bu, saldırı tespiti ve filtreleme mekanizmalarının işlem süresini artırdığını gösteriyor.
 
