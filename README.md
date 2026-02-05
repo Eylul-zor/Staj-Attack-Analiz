@@ -8,8 +8,7 @@ Bu proje, web uygulaması loglarını analiz ederek potansiyel saldırı davran�
 
 - **Saldırı Oranı**: Toplam istekler içindeki saldırı yüzdesi
 - **Saldırı Türleri**: Kategori bazlı saldırı dağılımı
-- **Zaman Davranışı**: Saatlik saldırı yoğunluğu analizi
-- **Endpoint Riskleri**: Route bazlı risk skorlaması
+- **Zaman Davranışı**: Saate bağlı saldırı yoğunluğu analizi
 - **Performans Etkileri**: Response time karşılaştırması
 
 ## 🛠️ Teknolojiler
@@ -21,18 +20,7 @@ Bu proje, web uygulaması loglarını analiz ederek potansiyel saldırı davran�
 - **matplotlib** - Görselleştirme
 - **Docker** - Veritabanı konteynerizasyonu
 
-## 📁 Proje Yapısı
 
-```
-├── analiz.py           # Ana analiz scripti
-├── grafikler.py        # Görselleştirme scripti
-├── docker-compose.yml  # PostgreSQL container tanımı
-├── output/             # Oluşturulan grafikler
-│   ├── attack_types.png
-│   ├── hourly_attacks.png
-│   └── method_risk.png
-└── README.md
-```
 
 ## 🚀 Kurulum
 
@@ -119,6 +107,29 @@ Saldırı olan ve olmayan isteklerin ortalama response time değerlerini karşı
 | ip_address | İstemci IP adresi |
 | country | Ülke bilgisi |
 
-## 📝 Lisans
+##Analizin Çıktıları
+Genel Bakış
+•  Toplam kayıt: 13,790 istek
+•  Saldırı sayısı: 236
+•  Saldırı oranı: %1.71
 
-Bu proje eğitim amaçlı geliştirilmiştir.
+## Saldırı Türlerinin Dağılımı:
+![Attack Types](output/attack_types.png)
+Yorum: Yorum: Command Injection ve SQL Injection en sık karşılaşılan kategorize edilmiş saldırı türleri.
+
+## Saatlik Attack Yoğunluğu
+![Hourly Attacks](output/hourly_attacks.png)
+Yorum: Grafikteki 2 peak, saldırıların gün içinde
+iki farklı zaman penceresinde yoğunlaştığını
+ve sürecin zamana bağlı bir davranış gösterdiğini ifade eder çünkü grafik bir dağılım sergilediği için rastgelelik yoktur.
+
+## HTTP Method Bazlı Attack Oranı
+![Method Risk](output/method_risk.png)
+Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunlaşmakta.GET istekleri çoğunlukla yalnızca veri görüntüleme amacı taşırken,POST istekleri kullanıcıdan  veri gönderimi içermektedir.Bu nedenle saldırı gözlemlerinin POST istekleri altında toplanması,Saldırılarının tamamının request üzerinden gerçekleştiği söylenebilir.
+
+--- RESPONSE TIME ORTALAMALARI ---
+attack
+ATTACK    354.483051
+NONE        6.261861
+Yorum: Saldırı istekleri normal isteklere göre ~57 kat daha yavaş. Bu, saldırı tespiti ve filtreleme mekanizmalarının işlem süresini artırdığını gösteriyor.
+
