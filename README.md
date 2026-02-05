@@ -62,30 +62,8 @@ python grafikler.py
 
 Grafikler `output/` klasörüne kaydedilir.
 
-## 📊 Analiz Çıktıları
 
-### 1. Saldırı Oranı
-Toplam istek sayısı içindeki saldırı yüzdesini hesaplar.
-
-### 2. Saldırı Türleri
-Kategori bazında saldırı dağılımını analiz eder (SQL Injection, XSS, vb.).
-
-### 3. Zaman Analizi
-Saldırıların saatlik dağılımını gösterir, yoğun saldırı saatlerini tespit eder.
-
-### 4. Endpoint Risk Analizi
-Her endpoint için risk skoru hesaplar:
-```
-risk_score = attack_count / total_requests
-```
-
-### 5. HTTP Method Analizi
-GET, POST, PUT, DELETE gibi HTTP metodlarının saldırı oranlarını karşılaştırır.
-
-### 6. Performans Etkisi
-Saldırı olan ve olmayan isteklerin ortalama response time değerlerini karşılaştırır.
-
-## 📈 Örnek Grafikler
+## 📈 Grafikler
 
 - `attack_types.png` - Saldırı türlerinin bar grafiği
 - `hourly_attacks.png` - Saatlik saldırı yoğunluğu çizgi grafiği
@@ -107,7 +85,8 @@ Saldırı olan ve olmayan isteklerin ortalama response time değerlerini karşı
 | ip_address | İstemci IP adresi |
 | country | Ülke bilgisi |
 
-##Analizin Çıktıları
+## Analizin Çıktıları
+
 Genel Bakış
 •  Toplam kayıt: 13,790 istek
 •  Saldırı sayısı: 236
@@ -115,19 +94,22 @@ Genel Bakış
 
 ## Saldırı Türlerinin Dağılımı:
 ![Attack Types](output/attack_types.png)
+
 Yorum: Yorum: Command Injection ve SQL Injection en sık karşılaşılan kategorize edilmiş saldırı türleri.
 
 ## Saatlik Attack Yoğunluğu
 ![Hourly Attacks](output/hourly_attacks.png)
+
 Yorum: Grafikteki 2 peak, saldırıların gün içinde
 iki farklı zaman penceresinde yoğunlaştığını
 ve sürecin zamana bağlı bir davranış gösterdiğini ifade eder çünkü grafik bir dağılım sergilediği için rastgelelik yoktur.
 
 ## HTTP Method Bazlı Attack Oranı
 ![Method Risk](output/method_risk.png)
+
 Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunlaşmakta.GET istekleri çoğunlukla yalnızca veri görüntüleme amacı taşırken,POST istekleri kullanıcıdan  veri gönderimi içermektedir.Bu nedenle saldırı gözlemlerinin POST istekleri altında toplanması,Saldırılarının tamamının request üzerinden gerçekleştiği söylenebilir.
 
---- RESPONSE TIME ORTALAMALARI ---
+## --- RESPONSE TIME ORTALAMALARI ---
 attack
 ATTACK    354.483051
 NONE        6.261861
