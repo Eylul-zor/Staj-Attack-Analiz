@@ -117,3 +117,4 @@ NONE     :   6.261861
 
 Yorum: Saldırı istekleri normal isteklere göre ~57 kat daha yavaş. Bu, saldırı tespiti ve filtreleme mekanizmalarının işlem süresini artırdığını gösteriyor.
 
+# Staj-Attack-Analiz
