@@ -13,15 +13,10 @@ Bu proje, web uygulaması loglarını analiz ederek potansiyel saldırı davran�
 
 
 
-## 🚀 Kurulum
+##  Kurulum
+requirements.txt gerekli kütüphaneleri install edin.
 
-### 1. Gerekli Kütüphaneleri Yükleyin
-
-```bash
-pip install pandas sqlalchemy psycopg2-binary matplotlib seaborn
-```
-
-### 2. PostgreSQL Veritabanını Başlatın
+### PostgreSQL Veritabanını Başlatın
 
 ```bash
 docker-compose up -d
