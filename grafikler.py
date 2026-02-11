@@ -8,6 +8,7 @@
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 from sqlalchemy import create_engine
 
 # ------------------------------
@@ -32,7 +33,8 @@ SELECT
     attack,
     category,
     route,
-    http_method
+    http_method,
+    responsetime
 FROM logs;
 """
 
@@ -117,11 +119,54 @@ plt.savefig(f"{OUTPUT_DIR}/method_risk.png")
 plt.close()
 
 # ------------------------------
-# 8. TAMAMLANDI
+# 8. GRAFİK 4: RESPONSE TIME vs ATTACK (LOGARİTMİK)
+# ------------------------------
+plt.figure(figsize=(10, 6))
+
+# Grafiği çiziyoruz
+sns.boxplot(x='attack', y='responsetime', data=df, palette="Set2")
+
+# --- ÖNEMLİ SATIR BURASI ---
+plt.yscale('log') 
+# ---------------------------
+
+plt.title("Attack Durumuna Göre Response Time Dağılımı (Logaritmik Ölçek)")
+plt.xlabel("İstek Durumu (NORMAL vs ATTACK)")
+plt.ylabel("Response Time (ms) - Log Scale")
+plt.grid(True, which="both", ls="-", alpha=0.2) # Izgaraları logaritmik için açmak iyidir
+
+plt.tight_layout()
+plt.savefig(f"{OUTPUT_DIR}/response_time_comparison_log.png")
+plt.close()
+
+# ------------------------------
+# 9. GRAFİK 5: ZAMAN BAZLI RESPONSE TIME VE ATTACKLAR
+# ------------------------------
+plt.figure(figsize=(12, 6))
+# Normal istekler
+plt.scatter(df[df['attack'] != 'ATTACK']['created_at'], 
+            df[df['attack'] != 'ATTACK']['responsetime'], 
+            alpha=0.5, label='Normal', s=10)
+
+# Saldırı istekleri (Kırmızı ve daha belirgin)
+plt.scatter(df[df['attack'] == 'ATTACK']['created_at'], 
+            df[df['attack'] == 'ATTACK']['responsetime'], 
+            color='red', label='Attack', s=20, marker='x')
+
+plt.title("Zaman Serisinde Response Time ve Saldırı Çakışması")
+plt.xlabel("Zaman")
+plt.ylabel("Response Time (ms)")
+plt.legend()
+plt.tight_layout()
+plt.savefig(f"{OUTPUT_DIR}/time_response_scatter.png")
+plt.close()
+
+# ------------------------------
+# 10. TAMAMLANDI
 # ------------------------------
 print("Grafikler başarıyla oluşturuldu:")
 print(f"- {OUTPUT_DIR}/attack_types.png")
 print(f"- {OUTPUT_DIR}/hourly_attacks.png")
 print(f"- {OUTPUT_DIR}/method_risk.png")
-
-
+print(f"- {OUTPUT_DIR}/response_time_comparison_log.png")
+print(f"- {OUTPUT_DIR}/time_response_scatter.png")
