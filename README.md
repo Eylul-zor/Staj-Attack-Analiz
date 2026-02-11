@@ -18,7 +18,7 @@ Bu proje, web uygulaması loglarını analiz ederek potansiyel saldırı davran�
 ### 1. Gerekli Kütüphaneleri Yükleyin
 
 ```bash
-pip install pandas sqlalchemy psycopg2-binary matplotlib
+pip install pandas sqlalchemy psycopg2-binary matplotlib seaborn
 ```
 
 ### 2. PostgreSQL Veritabanını Başlatın
