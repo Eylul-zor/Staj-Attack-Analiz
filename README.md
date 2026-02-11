@@ -11,15 +11,6 @@ Bu proje, web uygulaması loglarını analiz ederek potansiyel saldırı davran�
 - **Zaman Davranışı**: Saate bağlı saldırı yoğunluğu analizi
 - **Performans Etkileri**: Response time karşılaştırması
 
-## 🛠️ Teknolojiler
-
-- **Python 3.x**
-- **PostgreSQL** - Veritabanı
-- **pandas** - Veri analizi
-- **SQLAlchemy** - Veritabanı bağlantısı
-- **matplotlib** - Görselleştirme
-- **Docker** - Veritabanı konteynerizasyonu
-
 
 
 ## 🚀 Kurulum
@@ -53,6 +44,7 @@ Bu script aşağıdaki analizleri gerçekleştirir:
 - Route bazlı risk analizi
 - HTTP method bazlı risk oranları
 - Response time karşılaştırması
+- attack durumuna göre Response Time Dağılımı 
 
 ### Grafikleri Oluşturma
 
@@ -68,6 +60,8 @@ Grafikler `output/` klasörüne kaydedilir.
 - `attack_types.png` - Saldırı türlerinin bar grafiği
 - `hourly_attacks.png` - Saatlik saldırı yoğunluğu çizgi grafiği
 - `method_risk.png` - HTTP method bazlı saldırı oranları
+- `response_time_comparison_log.png` - attack durumuna göre Response Time Dağılımı
+
 
 ## 🗃️ Veritabanı Şeması
 
@@ -108,6 +102,13 @@ ve sürecin zamana bağlı bir davranış gösterdiğini ifade eder çünkü gra
 ![Method Risk](output/method_risk.png)
 
 Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunlaşmakta.GET istekleri çoğunlukla yalnızca veri görüntüleme amacı taşırken,POST istekleri kullanıcıdan  veri gönderimi içermektedir.Bu nedenle saldırı gözlemlerinin POST istekleri altında toplanması,Saldırılarının tamamının request üzerinden gerçekleştiği söylenebilir.
+
+## Attack durumuna göre Response Time Dağılımı (Logaritmik Ölçek)
+![Response Time Attack](output/response_time_comparison_log.png)
+
+Yorum: Grafiği incelediğimizde Normal trafik verileri (NONE), logaritmik ölçekte birbirine çok yakın değerler aldığı için kutu çizilse bile o kadar ince bir dikdörtgen olurdu ki, içindeki noktalarla karışıp fark edilmezdi. Bu yüzden stripplot ve boxplot fonksiyonlarını üst üste bindirerek gösterdim.
+Bu grafik, yapılan saldırının başarılı bir şekilde sistemi yavaşlattığını ve sistemin öngörülebilirliğini bozduğunu belgeliyor. Normal durumda verilerin frekans yoğunluğu (koyulaşan halkalar) 100 ms çizgisinin altında kalmaktadır. saldırı anında ise ortalama 250 ms civarına çıkıyor ve yer yer kullanıcıyı 10 saniye bekletebiliyor.
+
 
 ## RESPONSE TIME ORTALAMALARI 
 ATTACK  :  354.483051 

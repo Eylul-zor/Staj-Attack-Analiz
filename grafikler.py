@@ -139,30 +139,9 @@ plt.tight_layout()
 plt.savefig(f"{OUTPUT_DIR}/response_time_comparison_log.png")
 plt.close()
 
-# ------------------------------
-# 9. GRAFİK 5: ZAMAN BAZLI RESPONSE TIME VE ATTACKLAR
-# ------------------------------
-plt.figure(figsize=(12, 6))
-# Normal istekler
-plt.scatter(df[df['attack'] != 'ATTACK']['created_at'], 
-            df[df['attack'] != 'ATTACK']['responsetime'], 
-            alpha=0.5, label='Normal', s=10)
-
-# Saldırı istekleri (Kırmızı ve daha belirgin)
-plt.scatter(df[df['attack'] == 'ATTACK']['created_at'], 
-            df[df['attack'] == 'ATTACK']['responsetime'], 
-            color='red', label='Attack', s=20, marker='x')
-
-plt.title("Zaman Serisinde Response Time ve Saldırı Çakışması")
-plt.xlabel("Zaman")
-plt.ylabel("Response Time (ms)")
-plt.legend()
-plt.tight_layout()
-plt.savefig(f"{OUTPUT_DIR}/time_response_scatter.png")
-plt.close()
 
 # ------------------------------
-# 10. TAMAMLANDI
+# 9. TAMAMLANDI
 # ------------------------------
 print("Grafikler başarıyla oluşturuldu:")
 print(f"- {OUTPUT_DIR}/attack_types.png")
