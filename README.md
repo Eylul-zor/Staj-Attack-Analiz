@@ -101,15 +101,12 @@ Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunla
 ## Attack durumuna göre Response Time Dağılımı (Logaritmik Ölçek)
 ![Response Time Attack](output/response_time_comparison_log.png)
 
-Yorum: Grafiği incelediğimizde Normal trafik verileri (NONE), logaritmik ölçekte birbirine çok yakın değerler aldığı için kutu çizilse bile o kadar ince bir dikdörtgen olurdu ki, içindeki noktalarla karışıp fark edilmezdi. Bu yüzden stripplot ve boxplot fonksiyonlarını üst üste bindirerek gösterdim.
-Bu grafik, yapılan saldırının başarılı bir şekilde sistemi yavaşlattığını ve sistemin öngörülebilirliğini bozduğunu belgeliyor. Normal durumda verilerin frekans yoğunluğu (koyulaşan halkalar) 100 ms çizgisinin altında kalmaktadır. saldırı anında ise ortalama 250 ms civarına çıkıyor ve yer yer kullanıcıyı 10 saniye bekletebiliyor.
-
-
 ## RESPONSE TIME ORTALAMALARI 
-ATTACK  :  354.483051 
+attack
+ATTACK    354.483051
+NONE        6.261861  olduğunu görüyoruz.
 
-NONE     :   6.261861
+İdeal ortalama backend için ortlama 
 
-Yorum: Saldırı istekleri normal isteklere göre ~57 kat daha yavaş. Bu, saldırı tespiti ve filtreleme mekanizmalarının işlem süresini artırdığını gösteriyor.
+Yorum:Grafik incelendiğinde normal trafik (NONE) değerlerinin logaritmik ölçekte düşük gecikme sürelerinde kümelendiği görülmektedir. Normal koşullarda backend ortalama response süresi 6.26 ms olup, backend sistemler için kabul edilen 1–50 ms aralığında ve oldukça iyi bir seviyededir. Ancak saldırı sırasında ortalama response süresi 354.48 ms’ye yükselmiştir. Bu değer backend için yavaş kabul edilen 150–400 ms aralığına girmekte ve normal duruma kıyasla yaklaşık 56 katlık (%5560) bir artışa karşılık gelmektedir. Sonuç olarak saldırı, sistemi tamamen çökertmemiş olsa da backend performansında ciddi bir bozulmaya ve sistem kararlılığında belirgin bir düşüşe neden olmuştur.
 
-# Staj-Attack-Analiz
