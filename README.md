@@ -102,11 +102,10 @@ Yorum: Grafikte HTTP Method Bazlı Attack oranın tamamı Post üzerine yoğunla
 ![Response Time Attack](output/response_time_comparison_log.png)
 
 ## RESPONSE TIME ORTALAMALARI 
-attack
-ATTACK    354.483051
-NONE        6.261861  olduğunu görüyoruz.
 
-İdeal ortalama backend için ortlama 
+ATTACK    354.483051
+
+NONE        6.261861  olduğunu görüyoruz.
 
 Yorum:Grafik incelendiğinde normal trafik (NONE) değerlerinin logaritmik ölçekte düşük gecikme sürelerinde kümelendiği görülmektedir. Normal koşullarda backend ortalama response süresi 6.26 ms olup, backend sistemler için kabul edilen 1–50 ms aralığında ve oldukça iyi bir seviyededir. Ancak saldırı sırasında ortalama response süresi 354.48 ms’ye yükselmiştir. Bu değer backend için yavaş kabul edilen 150–400 ms aralığına girmekte ve normal duruma kıyasla yaklaşık 56 katlık (%5560) bir artışa karşılık gelmektedir. Sonuç olarak saldırı, sistemi tamamen çökertmemiş olsa da backend performansında ciddi bir bozulmaya ve sistem kararlılığında belirgin bir düşüşe neden olmuştur.
 
